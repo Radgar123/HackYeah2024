@@ -18,5 +18,7 @@ namespace Hearings.Shop
         {
             SaveManager.Instance.AddObjectToCharacter(objectToBuy);
         }
+        
+        //public void 
     }
 }

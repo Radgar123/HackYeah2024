@@ -62,9 +62,17 @@ namespace _Code.Scripts.WorldInteraction
 
                 if (SaveManager.Instance && ShopManager.Instance)
                 {
-                    ShopManager.Instance.objectToBuy = ShopID;
+                    SaveManager.Instance.AddObjectToCharacter(ShopID);
+                    //ShopManager.Instance.objectToBuy = ShopID;
+                    StartCoroutine(ReturnToBaseState());
                 }   
             }
+        }
+
+        private IEnumerator ReturnToBaseState()
+        {
+            yield return new WaitForSeconds(0.2f);
+            _Interacting = !_Interacting;
         }
     }
 }
