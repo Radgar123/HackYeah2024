@@ -50,7 +50,7 @@ namespace _Code.Scripts.LemurSystems.Fight
             List<LemurManager> enemyLemurs = charactersManager.GetEnemyLemurs();
 
             //calculate damage
-            float combinedDamage = 0;
+            int combinedDamage = 0;
             foreach (LemurManager pLemur in playerLemurs)
             {
                 combinedDamage += pLemur.scriptableCharacter.attack;
@@ -78,7 +78,7 @@ namespace _Code.Scripts.LemurSystems.Fight
             List<LemurManager> enemyLemurs = charactersManager.GetEnemyLemurs();
             
             //calculate damage - tylko z pierwszy walczymy więć tylko z pierwszego pobieram damage
-            float combinedDamage = 0;
+            int combinedDamage = 0;
             foreach (LemurManager eLemur in enemyLemurs)
             {
                 combinedDamage += eLemur.scriptableCharacter.attack;

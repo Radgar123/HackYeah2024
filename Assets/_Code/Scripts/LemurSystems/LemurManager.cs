@@ -20,7 +20,7 @@ namespace _Code.Scripts.LemurSystems
             UpdateUI();
         }
 
-        public float DealDamage
+        public int DealDamage
         {
             set
             {
@@ -30,7 +30,7 @@ namespace _Code.Scripts.LemurSystems
             }
         }
 
-        public float AddEnergy
+        public int AddEnergy
         {
             set
             {
@@ -39,7 +39,7 @@ namespace _Code.Scripts.LemurSystems
             }
         }
 
-        public float MultiplyEnergy
+        public int MultiplyEnergy
         {
             set
             {
@@ -48,7 +48,7 @@ namespace _Code.Scripts.LemurSystems
             }
         }
 
-        public float AddAttack
+        public int AddAttack
         {
             set
             {
@@ -57,7 +57,7 @@ namespace _Code.Scripts.LemurSystems
             }
         }
 
-        public float MultiplyAttack
+        public int MultiplyAttack
         {
             set
             {
@@ -144,7 +144,8 @@ namespace _Code.Scripts.LemurSystems
                 case global::SpecialAbility.AttackDebuff:
                     foreach (LemurManager lemurManager in playersLemurs)
                     {
-                        lemurManager.MultiplyAttack = 0.75f * lemurManager.scriptableCharacter.multiplier;
+                        float sum = 0.75f * lemurManager.scriptableCharacter.multiplier;
+                        lemurManager.MultiplyAttack = Mathf.CeilToInt(sum);
                     }
 
                     break;
@@ -160,7 +161,8 @@ namespace _Code.Scripts.LemurSystems
                     {
                         if (object.ReferenceEquals(enemyLemur, this))
                         {
-                            enemyLemur.MultiplyEnergy = 1.1f * enemyLemur.scriptableCharacter.multiplier;
+                            float sum = 1.1f * enemyLemur.scriptableCharacter.multiplier;
+                            enemyLemur.MultiplyEnergy = Mathf.CeilToInt(sum);
                         }
                     }
 

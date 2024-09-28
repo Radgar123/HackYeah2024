@@ -15,8 +15,8 @@ public class ScriptableCharacter : ScriptableObject
     
     public string characterName;
     
-    public float energy;
-    public float attack;
+    public int energy;
+    public int attack;
 
     [Header("Shops Params")]
     public int characterCost;
