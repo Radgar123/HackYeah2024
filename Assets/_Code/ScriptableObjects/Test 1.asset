@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2df12bb4945a449619d6c48f577b3c03, type: 3}
-  m_Name: Test
+  m_Name: Test 1
   m_EditorClassIdentifier: 
   characterType: 0
-  characterName: 1
-  energy: 1
-  attack: 1
-  attackSpeed: 1
-  dodgeRatio: 1
-  characterCost: 1
-  characterSell: 1
+  characterName: 2
+  energy: 2
+  attack: 2
+  attackSpeed: 2
+  dodgeRatio: 2
+  characterCost: 2
+  characterSell: 2
