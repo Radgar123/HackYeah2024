@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: EnemyTest
   m_EditorClassIdentifier: 
   characterType: 1
-  specialAbility: 3
+  specialAbility: 0
   characterName: 2
-  energy: 2
-  attack: 2
+  energy: 12
+  attack: 5
   characterCost: 2
   characterSell: 2
   multiplier: 1
+  abilityName: 
+  abilityDescription: 

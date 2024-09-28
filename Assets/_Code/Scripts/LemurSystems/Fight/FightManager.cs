@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,6 +9,26 @@ namespace _Code.Scripts.LemurSystems.Fight
     {
         [SerializeField] private CharactersManager charactersManager;
 
+        [Button]
+        public void StartFight()
+        {
+            ApplyPlayerAbility();
+            ApplyEnemyAbility();
+            StartCoroutine(MainFight());
+        }
+
+        private IEnumerator MainFight()
+        {
+            while (true)
+            {
+                if (PlayerAttack()) break;
+                yield return null;
+                if (EnemyAttack()) break;
+                yield return null;
+            }
+            Debug.Log("Zakonczono walke");
+        }
+        
         [Button]
         public void ApplyPlayerAbility()
         {
@@ -44,7 +65,7 @@ namespace _Code.Scripts.LemurSystems.Fight
         }
         
         [Button]
-        public void PlayerAttack()
+        public bool PlayerAttack()
         {
             List<LemurManager> playerLemurs = charactersManager.GetPlayerLemurs();
             List<LemurManager> enemyLemurs = charactersManager.GetEnemyLemurs();
@@ -61,18 +82,24 @@ namespace _Code.Scripts.LemurSystems.Fight
             if (enemyLemurs.Count <= 0)
             {
                 Debug.LogError("Brak enemies");
-                return;
+                return true;
             }
             
             foreach (LemurManager eLemur in enemyLemurs)
             {
                 eLemur.DealDamage = combinedDamage;
-                break;
+                if (eLemur.scriptableCharacter.energy <= 0)
+                {
+                    return true;
+                }
+                return false;
             }
+
+            return true;
         }
 
         [Button]
-        public void EnemyAttack()
+        public bool EnemyAttack()
         {
             List<LemurManager> playerLemurs = charactersManager.GetPlayerLemurs();
             List<LemurManager> enemyLemurs = charactersManager.GetEnemyLemurs();
@@ -89,13 +116,17 @@ namespace _Code.Scripts.LemurSystems.Fight
             if (playerLemurs.Count <= 0)
             {
                 Debug.LogError("Brak lemurów gracza");
-                return;
+                return true;
             }
-            
+
+            bool wasPLemurKiller = false;
             foreach (LemurManager pLemur in playerLemurs)
             {
                 pLemur.DealDamage = combinedDamage;
+                if (pLemur.scriptableCharacter.energy <= 0) wasPLemurKiller = true;
             }
+
+            return wasPLemurKiller;
         }
     }
 }

@@ -86,7 +86,7 @@ namespace _Code.Scripts.LemurSystems
         private void SpawnLemurs(List<GameObject> characters,List<Transform> currSpawnPoints)
         {
             if (characters.Count > currSpawnPoints.Count)
-            {
+            { //musi byc ta sama liczba spawnpointów co characters danego
                 Debug.LogError($"Over {currSpawnPoints.Count} lemurs to spawn, quiting - value driven by spawnPoints");
                 return;
             }
