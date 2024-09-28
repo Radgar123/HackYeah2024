@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using Hearings.Core.Singleton;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace _Code.Scripts.LemurSystems
 {
-    public class LemurSpawnSystem : MonoBehaviour
+    public class CharactersManager : Singleton<CharactersManager>
     {
-        [SerializeField] private GameObject lemurObject;
+        [SerializeField] private GameObject lemurPrefab;
         [SerializeField] private List<Transform> playerSpawnPoints;
         [SerializeField] private List<Transform> enemySpawnPoints;
 
@@ -24,6 +25,35 @@ namespace _Code.Scripts.LemurSystems
         }
 
         #endregion
+
+        public List<LemurManager> GetPlayerLemurs()
+        {
+            List<LemurManager> playersLemurs = new List<LemurManager>();
+            foreach (Transform parent in playerSpawnPoints)
+            {
+                LemurManager lm = parent.GetComponentInChildren<LemurManager>();
+                if (lm == null) continue;
+                playersLemurs.Add(lm);
+            }
+
+            return playersLemurs;
+        }
+        
+        public List<LemurManager> GetEnemyLemurs()
+        {
+            List<LemurManager> enemyLemurs = new List<LemurManager>();
+            foreach (Transform parent in enemySpawnPoints)
+            {
+                foreach (Transform child in parent)
+                {
+                    LemurManager lm = child.GetComponentInChildren<LemurManager>();
+                    if (lm == null) continue;
+                    enemyLemurs.Add(lm);
+                }
+            }
+
+            return enemyLemurs;
+        }
 
         public void LoadNewFight(List<GameObject> playerCharacters, List<GameObject> enemyCharacters)
         {
@@ -63,7 +93,9 @@ namespace _Code.Scripts.LemurSystems
     
             for (int i = 0; i < characters.Count; i++)
             {
-                GameObject currentLemur = Instantiate(lemurObject,currSpawnPoints[i]);
+                GameObject currentLemur = Instantiate(lemurPrefab,currSpawnPoints[i]);
+                currentLemur.GetComponent<LemurManager>().scriptableCharacter =
+                    Instantiate(characters[i].GetComponent<LemurManager>().scriptableCharacter);
                 //currentLemur.GetComponent<LemurManager>().scriptableCharacter = scriptableCharacters[i];
             }
         }
