@@ -10,5 +10,11 @@ namespace Hearings.SaveSystem
 
         [Header("Economic")] 
         public int cash;
+
+        public PlayerData(int cash, List<CharacterData> charactersArray)
+        {
+            this.cash = cash;
+            this.charactersArray = charactersArray;
+        }
     }
 }

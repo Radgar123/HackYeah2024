@@ -47,3 +47,10 @@ MonoBehaviour:
   playerData:
     charactersArray: []
     cash: 0
+  OnSaveComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLoadComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  loadedObjects: []

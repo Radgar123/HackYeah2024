@@ -5,5 +5,11 @@ namespace Hearings.SaveSystem
     {
         public int spawnObjectId;
         public int positionOnBoard;
+
+        public CharacterData(int spawnObjectId, int positionOnBoard)
+        {
+            this.spawnObjectId = spawnObjectId;
+            this.positionOnBoard = positionOnBoard;
+        }
     }
 }
