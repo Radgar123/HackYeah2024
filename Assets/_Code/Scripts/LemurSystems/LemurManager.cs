@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,8 +8,17 @@ namespace _Code.Scripts.LemurSystems
 {
     public class LemurManager : MonoBehaviour
     {
-        [Tooltip("Visible only for debug purpose")] 
+        [Tooltip("Visible only for debug purpose")]
         public ScriptableCharacter scriptableCharacter;
+
+        [Header("UI Elements")] 
+        [SerializeField] private TextMeshProUGUI energyText;
+        [SerializeField] private TextMeshProUGUI attackText;
+
+        private void Start()
+        {
+            UpdateUI();
+        }
 
         public float DealDamage
         {
@@ -16,6 +26,43 @@ namespace _Code.Scripts.LemurSystems
             {
                 scriptableCharacter.energy -= value;
                 if (scriptableCharacter.energy <= 0) KillMe();
+                UpdateUI();
+            }
+        }
+
+        public float AddEnergy
+        {
+            set
+            {
+                scriptableCharacter.energy += value;
+                UpdateUI();
+            }
+        }
+
+        public float MultiplyEnergy
+        {
+            set
+            {
+                scriptableCharacter.energy *= value; 
+                UpdateUI();
+            }
+        }
+
+        public float AddAttack
+        {
+            set
+            {
+                scriptableCharacter.attack += value; 
+                UpdateUI();
+            }
+        }
+
+        public float MultiplyAttack
+        {
+            set
+            {
+                scriptableCharacter.attack *= value; 
+                UpdateUI();
             }
         }
 
@@ -48,19 +95,19 @@ namespace _Code.Scripts.LemurSystems
             Debug.LogError("Nie znaleziono ID obiektu");
             return -1;
         }
-        
+
         public void SpecialAbility()
         {
             List<LemurManager> playersLemurs = CharactersManager.Instance.GetPlayerLemurs();
             List<LemurManager> enemyLemurs = CharactersManager.Instance.GetEnemyLemurs();
             List<LemurManager> restOfLemurs = new List<LemurManager>();
-            
+
             switch (scriptableCharacter.specialAbility)
             {
                 case global::SpecialAbility.None:
                     Debug.Log("No ability");
                     break;
-                
+
                 case global::SpecialAbility.FriendsPower:
                     Debug.Log("FriendsPower");
                     foreach (LemurManager playersLemur in playersLemurs)
@@ -74,10 +121,11 @@ namespace _Code.Scripts.LemurSystems
                     //add buff to all of yours available allies
                     foreach (LemurManager lemurManager in restOfLemurs)
                     {
-                        lemurManager.scriptableCharacter.attack += 1 * lemurManager.scriptableCharacter.multiplier;
+                        lemurManager.AddAttack = 1 * lemurManager.scriptableCharacter.multiplier;
                     }
+
                     break;
-                
+
                 case global::SpecialAbility.FriendsEnergy:
                     Debug.Log("FriendsEnergy");
                     foreach (LemurManager playersLemur in playersLemurs)
@@ -89,31 +137,33 @@ namespace _Code.Scripts.LemurSystems
                     }
 
                     int lemurNo = Random.Range(0, restOfLemurs.Count - 1);
-                    restOfLemurs[lemurNo].scriptableCharacter.energy +=
+                    restOfLemurs[lemurNo].AddEnergy =
                         2 * restOfLemurs[lemurNo].scriptableCharacter.multiplier;
                     break;
-                
+
                 case global::SpecialAbility.AttackDebuff:
                     foreach (LemurManager lemurManager in playersLemurs)
                     {
-                        lemurManager.scriptableCharacter.attack *= 0.75f * lemurManager.scriptableCharacter.multiplier;
+                        lemurManager.MultiplyAttack = 0.75f * lemurManager.scriptableCharacter.multiplier;
                     }
+
                     break;
-                
+
                 case global::SpecialAbility.EnergyDebuff:
                     //Zeby zadziałało to Ablility enemy musi wykonać się pierwsze
                     int lemurNumber = Random.Range(0, playersLemurs.Count - 1);
                     playersLemurs[lemurNumber].KillMe();
                     break;
-                
+
                 case global::SpecialAbility.HeBig:
                     foreach (LemurManager enemyLemur in enemyLemurs)
                     {
                         if (object.ReferenceEquals(enemyLemur, this))
                         {
-                            enemyLemur.scriptableCharacter.energy *= 1.1f * enemyLemur.scriptableCharacter.multiplier;
+                            enemyLemur.MultiplyEnergy = 1.1f * enemyLemur.scriptableCharacter.multiplier;
                         }
                     }
+
                     break;
                 default:
                     Debug.LogError("Unsupported ability");
@@ -124,6 +174,15 @@ namespace _Code.Scripts.LemurSystems
         public void KillMe()
         {
             Destroy(gameObject);
+        }
+
+        private void UpdateUI()
+        {
+            string e = scriptableCharacter.energy.ToString("0");
+            string a = scriptableCharacter.attack.ToString("0");
+            
+            energyText.text = $"Energy: {e}";
+            attackText.text = $"Attack: {a}";
         }
     }
 }
