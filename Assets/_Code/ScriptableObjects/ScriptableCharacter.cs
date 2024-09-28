@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 
 
+
 [CreateAssetMenu(fileName = "CharacterData", menuName = "ScriptableObjects/Character/characterData", order = 1)]
 public class ScriptableCharacter : ScriptableObject
 {
