@@ -70,10 +70,14 @@ namespace _Code.Scripts.WorldInteraction
                 {
                     if (SaveManager.Instance.playerData.cash >= _lemurManager.scriptableCharacter.characterCost)
                     {
+                        //stac nas
+                        AudioSource aus = GetComponent<AudioSource>();
+                        aus.PlayOneShot(aus.clip);
                         SaveManager.Instance.playerData.cash -= _lemurManager.scriptableCharacter.characterCost;
                     }
                     else
                     {
+                        //nie stac nas
                         _Interacting = false;
                         return;
                     }
