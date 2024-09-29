@@ -748,7 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba65c50c9cd4b6889343c32e364f454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptableCharacter: {fileID: 11400000, guid: 2db9fa48e9270094d90ff3d745630caa, type: 2}
+  scriptableCharacter: {fileID: 11400000, guid: 3b90f4e9597b11b41a3ddf0a00f7e902, type: 2}
   energyText: {fileID: 6150215489222695578}
   attackText: {fileID: 2903027513347466573}
 --- !u!95 &5604432277162861497
