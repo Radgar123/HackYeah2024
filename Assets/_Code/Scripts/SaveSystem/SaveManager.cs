@@ -10,6 +10,7 @@ using _Code.Scripts.LemurSystems;
 using _Code.Scripts.WorldInteraction;
 using Hearings.Shop;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Hearings.SaveSystem
 {
@@ -52,9 +53,9 @@ namespace Hearings.SaveSystem
                     playersLemurs.Add(VARIABLE);
                 }
 
-                enemiesLemurs.Add(EnemiesManager.Instance.GetRandomEnemy());
-                
-                CharactersManager.Instance.LoadNewFight(playersLemurs,enemiesLemurs);
+                //To musi sie wykonac tylko na scenie z walką
+                if(SceneManager.GetActiveScene().buildIndex == 1) enemiesLemurs.Add(EnemiesManager.Instance.GetRandomEnemy());
+                if(SceneManager.GetActiveScene().buildIndex == 1) CharactersManager.Instance.LoadNewFight(playersLemurs,enemiesLemurs);
             }
             else
             {
