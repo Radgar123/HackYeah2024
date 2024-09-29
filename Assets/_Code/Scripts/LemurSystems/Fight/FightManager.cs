@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using _Code.Scripts.LemurSystems.FightUI;
 using DG.Tweening;
@@ -15,7 +16,14 @@ namespace _Code.Scripts.LemurSystems.Fight
 
         public UnityEvent winEvent;
         public UnityEvent loseEvent;
-            
+
+
+        private IEnumerator Start()
+        {
+            yield return new WaitForSeconds(2);
+            StartFight();
+        }
+
         [Button]
         public void StartFight()
         {
@@ -23,7 +31,7 @@ namespace _Code.Scripts.LemurSystems.Fight
             ApplyEnemyAbility();
             StartCoroutine(MainFight());
         }
-
+        
         private IEnumerator MainFight()
         {
             KilledType attack;
