@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2df12bb4945a449619d6c48f577b3c03, type: 3}
-  m_Name: EnemyTest 3
+  m_Name: Fire
   m_EditorClassIdentifier: 
   characterType: 1
   specialAbility: 0
