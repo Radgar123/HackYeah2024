@@ -86,14 +86,14 @@ namespace _Code.Scripts.LemurSystems
         private void SpawnLemurs(List<GameObject> characters,List<Transform> currSpawnPoints)
         {
             if (characters.Count > currSpawnPoints.Count)
-            {
+            { //musi byc ta sama liczba spawnpointów co characters danego
                 Debug.LogError($"Over {currSpawnPoints.Count} lemurs to spawn, quiting - value driven by spawnPoints");
                 return;
             }
     
             for (int i = 0; i < characters.Count; i++)
             {
-                GameObject currentLemur = Instantiate(lemurPrefab,currSpawnPoints[i]);
+                GameObject currentLemur = Instantiate(characters[i],currSpawnPoints[i]);
                 currentLemur.GetComponent<LemurManager>().scriptableCharacter =
                     Instantiate(characters[i].GetComponent<LemurManager>().scriptableCharacter);
                 //currentLemur.GetComponent<LemurManager>().scriptableCharacter = scriptableCharacters[i];

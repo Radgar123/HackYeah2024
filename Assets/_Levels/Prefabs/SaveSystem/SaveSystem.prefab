@@ -53,4 +53,11 @@ MonoBehaviour:
   OnLoadComplete:
     m_PersistentCalls:
       m_Calls: []
-  loadedObjects: []
+  loadedObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  instantiatedObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

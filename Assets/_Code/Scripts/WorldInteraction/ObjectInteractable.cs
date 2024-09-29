@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Numerics;
 using _Code.Scripts.Interface;
+using _Code.Scripts.LemurSystems;
 using Hearings.SaveSystem;
 using Hearings.Shop;
 using UnityEngine;
@@ -21,10 +22,12 @@ namespace _Code.Scripts.WorldInteraction
         public bool _isInteracting = true;
         
         private ShopModeType _shopMode;
+        private LemurManager _lemurManager;
 
         private void Awake()
         {
             _shopMode = FindObjectOfType<ShopModeType>();
+            _lemurManager = GetComponent<LemurManager>();
             
             _basePosition = transform.position;
             _interctPosition = new Vector3(_basePosition.x + _OffsetPosition.x, 
@@ -33,8 +36,11 @@ namespace _Code.Scripts.WorldInteraction
 
         private void Update()
         {
+            
             if (_Interacting)
             {
+                
+                
                 if (transform.position != _interctPosition)
                 {
                     transform.position = 
@@ -62,6 +68,15 @@ namespace _Code.Scripts.WorldInteraction
 
                 if (SaveManager.Instance && ShopManager.Instance)
                 {
+                    if (SaveManager.Instance.playerData.cash >= _lemurManager.scriptableCharacter.characterCost)
+                    {
+                        SaveManager.Instance.playerData.cash -= _lemurManager.scriptableCharacter.characterCost;
+                    }
+                    else
+                    {
+                        _Interacting = false;
+                        return;
+                    }
                     SaveManager.Instance.AddObjectToCharacter(ShopID);
                     //ShopManager.Instance.objectToBuy = ShopID;
                     StartCoroutine(ReturnToBaseState());

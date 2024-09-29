@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.radgar-games.com.radgar.radgaraudiotool": {
+      "version": "https://github.com/Radgar123/Radgar-audio-manager.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "77b6bb7e60556ab0d68d179ba7a0916515cb90cc"
+    },
     "com.unity.2d.animation": {
       "version": "9.1.2",
       "depth": 1,
@@ -30,11 +37,11 @@
       "depth": 2,
       "source": "registry",
       "dependencies": {
+        "com.unity.burst": "1.7.3",
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.mathematics": "1.1.0",
-        "com.unity.modules.uielements": "1.0.0",
         "com.unity.modules.animation": "1.0.0",
-        "com.unity.burst": "1.7.3"
+        "com.unity.modules.uielements": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
