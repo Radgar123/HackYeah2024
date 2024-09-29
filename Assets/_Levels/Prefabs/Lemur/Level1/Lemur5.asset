@@ -15,10 +15,10 @@ MonoBehaviour:
   characterType: 0
   specialAbility: 0
   characterName: 5
-  energy: 80
-  attack: 1
-  characterCost: 5
-  characterSell: 5
+  energy: 10
+  attack: 5
+  characterCost: 2
+  characterSell: 1
   multiplier: 1
   abilityName: 
   abilityDescription: 
