@@ -158,11 +158,6 @@ Transform:
   - {fileID: 1321238265}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &54495935 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2589978676528766129, guid: fbecee00bffb9074f9d4d633ebc79452, type: 3}
-  m_PrefabInstance: {fileID: 2073556329}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &141927762
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,16 +315,6 @@ Transform:
   - {fileID: 1257798924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &249527147 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2589978676528766129, guid: fbecee00bffb9074f9d4d633ebc79452, type: 3}
-  m_PrefabInstance: {fileID: 913144546}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &370096579 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2589978676528766129, guid: fbecee00bffb9074f9d4d633ebc79452, type: 3}
-  m_PrefabInstance: {fileID: 1068882248}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &462949317
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,11 +393,6 @@ MonoBehaviour:
   obj: {fileID: 1219074461}
   duration: 2
   startPos: {fileID: 1533909696}
---- !u!1 &562400530 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2589978676528766129, guid: fbecee00bffb9074f9d4d633ebc79452, type: 3}
-  m_PrefabInstance: {fileID: 1321238264}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619532090
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,11 +732,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60fc5ebdc936b451abde6a58d1e65cf2, type: 3}
---- !u!1 &833696631 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2589978676528766129, guid: fbecee00bffb9074f9d4d633ebc79452, type: 3}
-  m_PrefabInstance: {fileID: 740780579}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &853720682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,11 +1145,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1837802802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1154191473 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2589978676528766129, guid: fbecee00bffb9074f9d4d633ebc79452, type: 3}
-  m_PrefabInstance: {fileID: 1257798923}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1217418228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,14 +1721,8 @@ MonoBehaviour:
   - {fileID: 853720683}
   enemySpawnPoints:
   - {fileID: 810719852}
-  debugCharacters:
-  - {fileID: 54495935}
-  - {fileID: 249527147}
-  - {fileID: 370096579}
-  - {fileID: 833696631}
-  - {fileID: 562400530}
-  debugEnemyCharacters:
-  - {fileID: 1154191473}
+  debugCharacters: []
+  debugEnemyCharacters: []
 --- !u!114 &1645912042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1771,7 +1735,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf63c8936ba4506b33dc0a837c99c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
+  enemies:
+  - {fileID: 3172419406430325261, guid: bc970496a56e6f343b0707c2b2b7fc32, type: 3}
+  - {fileID: 3172419406430325261, guid: a48bef7bd89f96e4f9de682818b129ba, type: 3}
+  - {fileID: 3172419406430325261, guid: 31ca56dc50a315b409b36e222f1d0564, type: 3}
 --- !u!1 &1658544539
 GameObject:
   m_ObjectHideFlags: 0
