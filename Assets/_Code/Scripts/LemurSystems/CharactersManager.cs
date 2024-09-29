@@ -14,14 +14,13 @@ namespace _Code.Scripts.LemurSystems
 
         #region Debug
 
-        [Header("Debug")]
-        [SerializeField] private List<GameObject> debugCharacters;
+        [Header("Debug")] [SerializeField] private List<GameObject> debugCharacters;
         [SerializeField] private List<GameObject> debugEnemyCharacters;
-        
+
         [Button]
         public void DebugSpawner()
         {
-            LoadNewFight(debugCharacters,debugEnemyCharacters);
+            LoadNewFight(debugCharacters, debugEnemyCharacters);
         }
 
         #endregion
@@ -38,7 +37,7 @@ namespace _Code.Scripts.LemurSystems
 
             return playersLemurs;
         }
-        
+
         public List<LemurManager> GetEnemyLemurs()
         {
             List<LemurManager> enemyLemurs = new List<LemurManager>();
@@ -60,7 +59,7 @@ namespace _Code.Scripts.LemurSystems
             InitSpawnLemurs(playerCharacters);
             InitSpawnLemurs(enemyCharacters);
         }
-        
+
         private void InitSpawnLemurs(List<GameObject> characters)
         {
             if (characters.Count <= 0)
@@ -68,14 +67,14 @@ namespace _Code.Scripts.LemurSystems
                 Debug.LogWarning("0 or less lemurs to spawn");
                 return;
             }
-            
+
             switch (characters[0].GetComponent<LemurManager>().scriptableCharacter.characterType)
             {
                 case CharacterType.Player:
-                    SpawnLemurs(characters,playerSpawnPoints);
+                    SpawnLemurs(characters, playerSpawnPoints);
                     break;
                 case CharacterType.Enemy:
-                    SpawnLemurs(characters,enemySpawnPoints);
+                    SpawnLemurs(characters, enemySpawnPoints);
                     break;
                 default:
                     Debug.LogError("No character type, or unsupported");
@@ -83,11 +82,11 @@ namespace _Code.Scripts.LemurSystems
             }
         }
 
-        private void SpawnLemurs(List<GameObject> characters,List<Transform> currSpawnPoints)
+        private void SpawnLemurs(List<GameObject> characters, List<Transform> currSpawnPoints)
         {
             if (characters[0] == null)
             {
-                Debug.LogError("No enemies");
+                Debug.LogError("No characters");
                 return;
             }
             // if (characters.Count > currSpawnPoints.Count)
@@ -96,25 +95,23 @@ namespace _Code.Scripts.LemurSystems
             //     return;
             // }
 
-            GameObject currentLemur;
-            
             switch (characters[0].GetComponent<LemurManager>().scriptableCharacter.characterType)
             {
                 case CharacterType.Enemy:
-                    currentLemur = null;
-                    currentLemur = Instantiate(characters[0],currSpawnPoints[0]);
-                    currentLemur.GetComponent<LemurManager>().scriptableCharacter = 
+                    GameObject currentLemur = Instantiate(characters[0], currSpawnPoints[0]);
+                    currentLemur.GetComponent<LemurManager>().scriptableCharacter =
                         Instantiate(characters[0].GetComponent<LemurManager>().scriptableCharacter);
                     break;
                 case CharacterType.Player:
                     for (int i = 0; i < characters.Count; i++)
                     {
-                        currentLemur = null;
-                        currentLemur = Instantiate(characters[i],currSpawnPoints[i]);
-                        currentLemur.GetComponent<LemurManager>().scriptableCharacter =
+                        if (characters[i] == null) continue;
+                        GameObject currLemur = Instantiate(characters[i], currSpawnPoints[i]);
+                        currLemur.GetComponent<LemurManager>().scriptableCharacter =
                             Instantiate(characters[i].GetComponent<LemurManager>().scriptableCharacter);
                         //currentLemur.GetComponent<LemurManager>().scriptableCharacter = scriptableCharacters[i];
                     }
+
                     break;
             }
         }
