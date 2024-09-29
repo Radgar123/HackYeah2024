@@ -358,6 +358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6525952655848990932}
   - component: {fileID: -34969043019750228}
+  - component: {fileID: 6558120999731337830}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -398,6 +399,27 @@ MonoBehaviour:
   scriptableCharacter: {fileID: 11400000, guid: c099657fa01abbb4a8aff39c0dd42c06, type: 2}
   energyText: {fileID: 6629893868958687677}
   attackText: {fileID: 2383047530203651690}
+--- !u!95 &6558120999731337830
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3172419406430325261}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0c834a858fe50b4419516ca49b2965ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3569622273957083437
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 654221861568146225, guid: 294409178b3e1584e8b25d06b058068e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.5
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 654221861568146225, guid: 294409178b3e1584e8b25d06b058068e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
