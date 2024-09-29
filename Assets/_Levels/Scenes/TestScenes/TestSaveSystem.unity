@@ -822,7 +822,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &1452842289
 RectTransform:
@@ -1913,6 +1913,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 6800634736758109996}
   - {fileID: 1608671289}
   - {fileID: 452038832}
   - {fileID: 1512116961764627503}
@@ -1920,7 +1921,6 @@ SceneRoots:
   - {fileID: 2048571073}
   - {fileID: 5926758079522244496}
   - {fileID: 2102543045}
-  - {fileID: 6800634736758109996}
   - {fileID: 1864196080}
   - {fileID: 250796932}
   - {fileID: 868909102651793057}
