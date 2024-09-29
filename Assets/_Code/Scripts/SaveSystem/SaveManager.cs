@@ -5,6 +5,8 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using System.IO;
 using System.Linq;
+using _Code.Scripts.Enemies;
+using _Code.Scripts.LemurSystems;
 using _Code.Scripts.WorldInteraction;
 using Hearings.Shop;
 using UnityEngine.Events;
@@ -41,6 +43,18 @@ namespace Hearings.SaveSystem
             {
                 Load();
                 Debug.Log("Loading save file");
+
+                List<GameObject> playersLemurs = new List<GameObject>();
+                List<GameObject> enemiesLemurs = new List<GameObject>();
+
+                foreach (var VARIABLE in loadedObjects)
+                {
+                    playersLemurs.Add(VARIABLE);
+                }
+
+                enemiesLemurs.Add(EnemiesManager.Instance.GetRandomEnemy());
+                
+                CharactersManager.Instance.LoadNewFight(playersLemurs,enemiesLemurs);
             }
             else
             {
