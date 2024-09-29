@@ -124,7 +124,7 @@ namespace _Code.Scripts.LemurSystems.Fight
             //bije tylko pierwszego enemiego
             if (enemyLemurs.Count <= 0)
             {
-                Debug.LogError("Brak enemies");
+                Debug.Log("Brak enemies");
                 return KilledType.Exception;
             }
             
@@ -168,8 +168,21 @@ namespace _Code.Scripts.LemurSystems.Fight
             foreach (LemurManager pLemur in playerLemurs)
             {
                 pLemur.DealDamage = combinedDamage;
-                if (pLemur.scriptableCharacter.energy <= 0) wasPLemurKiller = KilledType.NoOne;
+                
+                if (pLemur.scriptableCharacter.energy <= 0) pLemur.KillMe();
             }
+
+            int pLCount = playerLemurs.Count;
+            int j = 0;
+            for (int i = 0; i < playerLemurs.Count; i++)
+            {
+                if (playerLemurs[i] == null) j++;
+            }
+
+            if (j == pLCount) return KilledType.Player;
+
+            playerLemurs = charactersManager.GetPlayerLemurs();
+            if (playerLemurs.Count > 0) wasPLemurKiller = KilledType.NoOne;
 
             return wasPLemurKiller;
         }

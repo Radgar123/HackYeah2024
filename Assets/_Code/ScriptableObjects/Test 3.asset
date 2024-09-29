@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2df12bb4945a449619d6c48f577b3c03, type: 3}
-  m_Name: Test 2
+  m_Name: Test 3
   m_EditorClassIdentifier: 
   characterType: 0
   specialAbility: 0
   characterName: 3
-  energy: 3
+  energy: 50
   attack: 3
   characterCost: 3
   characterSell: 3
