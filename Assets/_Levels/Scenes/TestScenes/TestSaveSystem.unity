@@ -1674,6 +1674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d778b02afd4099b5dcbe72342f8951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uiControllerAnimations: {fileID: 329409930}
 --- !u!4 &1565132945
 Transform:
   m_ObjectHideFlags: 0
