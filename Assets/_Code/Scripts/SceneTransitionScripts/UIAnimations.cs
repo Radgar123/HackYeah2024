@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -11,7 +12,12 @@ namespace _Code.Scripts.SceneTransitionScripts
         [SerializeField] private Transform spawnPosOut;
         [SerializeField] private GameObject leaf;
         [SerializeField] private float fadeDuration = 2f;
-        
+
+        private void Start()
+        {
+            UITransitionFadeOut();
+        }
+
         [Button]
         public void UITransitionFadeIn()
         {

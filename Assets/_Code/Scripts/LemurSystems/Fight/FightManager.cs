@@ -4,6 +4,7 @@ using _Code.Scripts.LemurSystems.FightUI;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _Code.Scripts.LemurSystems.Fight
 {
@@ -11,7 +12,10 @@ namespace _Code.Scripts.LemurSystems.Fight
     {
         [SerializeField] private CharactersManager charactersManager;
         [SerializeField] private FightUIAnimations fightUIAnimations;
-        
+
+        public UnityEvent winEvent;
+        public UnityEvent loseEvent;
+            
         [Button]
         public void StartFight()
         {
@@ -42,17 +46,19 @@ namespace _Code.Scripts.LemurSystems.Fight
             switch (attack)
             {
                 case KilledType.Enemy:
-                    Debug.Log("Czekanie enemy");
+                    //Debug.Log("Czekanie enemy");
                     yield return new WaitForEndOfFrame();
                     yield return new WaitUntil(() => !fightUIAnimations.sequence.IsPlaying());
                     DetectAndKill(charactersManager.GetEnemyLemurs());
-                    Debug.Log("Odczekano enemy");
+                    winEvent.Invoke();
+                    //Debug.Log("Odczekano enemy");
                     break;
                 case KilledType.Player:
                     //Debug.Log("Czekanie");
                     yield return new WaitForEndOfFrame();
                     yield return new WaitUntil(() => !fightUIAnimations.sequence.IsPlaying());
                     DetectAndKill(charactersManager.GetPlayerLemurs());
+                    loseEvent.Invoke();
                     //Debug.Log("Odczekano");
                     break;
                 default:
