@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,11 @@ using UnityEngine;
 public class AnimatorController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+
+    private void Start()
+    {
+        AttackAnim();
+    }
 
     public void AttackAnim()
     {

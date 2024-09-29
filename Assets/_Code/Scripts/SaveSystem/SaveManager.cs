@@ -54,8 +54,8 @@ namespace Hearings.SaveSystem
                 }
 
                 //To musi sie wykonac tylko na scenie z walką
-                if(SceneManager.GetActiveScene().buildIndex == 1) enemiesLemurs.Add(EnemiesManager.Instance.GetRandomEnemy());
-                if(SceneManager.GetActiveScene().buildIndex == 1) CharactersManager.Instance.LoadNewFight(playersLemurs,enemiesLemurs);
+                if(SceneManager.GetActiveScene().buildIndex == 2) enemiesLemurs.Add(EnemiesManager.Instance.GetRandomEnemy());
+                if(SceneManager.GetActiveScene().buildIndex == 2) CharactersManager.Instance.LoadNewFight(playersLemurs,enemiesLemurs);
             }
             else
             {
