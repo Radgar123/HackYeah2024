@@ -56,10 +56,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f432d9442ff5a4109a8e1ae73ea68d52, type: 2}
-    - target: {fileID: 8467834453525705716, guid: 19dcd5d85f6604410ad36e706dc4e6d3, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8760021787506134207, guid: 19dcd5d85f6604410ad36e706dc4e6d3, type: 3}
       propertyPath: ShopID
       value: 2

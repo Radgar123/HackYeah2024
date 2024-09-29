@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.radgar-games.com.radgar.radgaraudiotool": "https://github.com/Radgar123/Radgar-audio-manager.git",
     "com.unity.2d.pixel-perfect": "5.0.3",
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.cinemachine": "2.10.1",
