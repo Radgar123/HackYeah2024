@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using VFolders.Libs;
 
 namespace _Code.Scripts.LemurSystems.FightUI
 {
@@ -25,7 +24,8 @@ namespace _Code.Scripts.LemurSystems.FightUI
             
             sequence.OnComplete(() =>
             {
-                newObj.gameObject.Destroy();
+                //Destroy(newObj.gameObject);
+                newObj.gameObject.SetActive(false);
             });
             
             sequence.Play();

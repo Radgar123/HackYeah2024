@@ -174,7 +174,7 @@ namespace _Code.Scripts.LemurSystems.Fight
             //przeiterowac przez playera i zadać im dmg
             if (playerLemurs.Count <= 0)
             {
-                Debug.LogError("Brak lemurów gracza");
+                Debug.Log("Brak lemurów gracza");
                 return KilledType.Player;
             }
 

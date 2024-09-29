@@ -1953,8 +1953,6 @@ MonoBehaviour:
   - {fileID: 462949318}
   - {fileID: 1151326677}
   - {fileID: 884165009}
-  - {fileID: 0}
-  - {fileID: 0}
   enemySpawnPoints:
   - {fileID: 810719852}
   debugCharacters: []

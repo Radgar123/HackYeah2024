@@ -85,18 +85,37 @@ namespace _Code.Scripts.LemurSystems
 
         private void SpawnLemurs(List<GameObject> characters,List<Transform> currSpawnPoints)
         {
-            if (characters.Count > currSpawnPoints.Count)
-            { //musi byc ta sama liczba spawnpointów co characters danego
-                Debug.LogError($"Over {currSpawnPoints.Count} lemurs to spawn, quiting - value driven by spawnPoints");
+            if (characters[0] == null)
+            {
+                Debug.LogError("No enemies");
                 return;
             }
-    
-            for (int i = 0; i < characters.Count; i++)
+            // if (characters.Count > currSpawnPoints.Count)
+            // { //musi byc ta sama liczba spawnpointów co characters danego
+            //     Debug.LogError($"Over {currSpawnPoints.Count} lemurs to spawn, quiting - value driven by spawnPoints");
+            //     return;
+            // }
+
+            GameObject currentLemur;
+            
+            switch (characters[0].GetComponent<LemurManager>().scriptableCharacter.characterType)
             {
-                GameObject currentLemur = Instantiate(characters[i],currSpawnPoints[i]);
-                currentLemur.GetComponent<LemurManager>().scriptableCharacter =
-                    Instantiate(characters[i].GetComponent<LemurManager>().scriptableCharacter);
-                //currentLemur.GetComponent<LemurManager>().scriptableCharacter = scriptableCharacters[i];
+                case CharacterType.Enemy:
+                    currentLemur = null;
+                    currentLemur = Instantiate(characters[0],currSpawnPoints[0]);
+                    currentLemur.GetComponent<LemurManager>().scriptableCharacter = 
+                        Instantiate(characters[0].GetComponent<LemurManager>().scriptableCharacter);
+                    break;
+                case CharacterType.Player:
+                    for (int i = 0; i < characters.Count; i++)
+                    {
+                        currentLemur = null;
+                        currentLemur = Instantiate(characters[i],currSpawnPoints[i]);
+                        currentLemur.GetComponent<LemurManager>().scriptableCharacter =
+                            Instantiate(characters[i].GetComponent<LemurManager>().scriptableCharacter);
+                        //currentLemur.GetComponent<LemurManager>().scriptableCharacter = scriptableCharacters[i];
+                    }
+                    break;
             }
         }
     }
