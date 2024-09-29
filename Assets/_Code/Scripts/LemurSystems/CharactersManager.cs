@@ -93,7 +93,7 @@ namespace _Code.Scripts.LemurSystems
     
             for (int i = 0; i < characters.Count; i++)
             {
-                GameObject currentLemur = Instantiate(lemurPrefab,currSpawnPoints[i]);
+                GameObject currentLemur = Instantiate(characters[i],currSpawnPoints[i]);
                 currentLemur.GetComponent<LemurManager>().scriptableCharacter =
                     Instantiate(characters[i].GetComponent<LemurManager>().scriptableCharacter);
                 //currentLemur.GetComponent<LemurManager>().scriptableCharacter = scriptableCharacters[i];
