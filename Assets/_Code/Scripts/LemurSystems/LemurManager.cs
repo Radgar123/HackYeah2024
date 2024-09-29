@@ -10,6 +10,8 @@ namespace _Code.Scripts.LemurSystems
         [Tooltip("Visible only for debug purpose")] 
         public ScriptableCharacter scriptableCharacter;
 
+        public bool isShopMode = false;
+        
         public float DealDamage
         {
             set

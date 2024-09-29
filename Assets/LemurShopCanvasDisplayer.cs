@@ -12,11 +12,13 @@ public class LemurShopCanvasDisplayer : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI energyText;
     [SerializeField] private TextMeshProUGUI attackText;
+    [SerializeField] private TextMeshProUGUI costText;
 
 
     private void Start()
     {
         energyText.text = _lemurManager.scriptableCharacter.energy.ToString();
         attackText.text = _lemurManager.scriptableCharacter.attack.ToString();
+        costText.text = _lemurManager.scriptableCharacter.characterCost.ToString();
     }
 }
