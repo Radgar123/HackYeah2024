@@ -255,6 +255,24 @@ MonoBehaviour:
       lv3:
         itemObject: {fileID: 603966879189380404, guid: bfbd0d05599144df7b362575e18cbeee, type: 3}
         probability: 5
+    - lv1:
+        itemObject: {fileID: 45888766851080623, guid: df2bc071eb5fb3244bbbc2ca5054988f, type: 3}
+        probability: 75
+      lv2:
+        itemObject: {fileID: 45888766851080623, guid: df2bc071eb5fb3244bbbc2ca5054988f, type: 3}
+        probability: 20
+      lv3:
+        itemObject: {fileID: 45888766851080623, guid: df2bc071eb5fb3244bbbc2ca5054988f, type: 3}
+        probability: 5
+    - lv1:
+        itemObject: {fileID: 45888766851080623, guid: 488f3c60ff001ad45941b2d46743972f, type: 3}
+        probability: 75
+      lv2:
+        itemObject: {fileID: 45888766851080623, guid: 488f3c60ff001ad45941b2d46743972f, type: 3}
+        probability: 20
+      lv3:
+        itemObject: {fileID: 45888766851080623, guid: 488f3c60ff001ad45941b2d46743972f, type: 3}
+        probability: 5
   itemList: []
   shopPoints:
   - {fileID: 1197844131}

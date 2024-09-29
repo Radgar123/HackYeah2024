@@ -185,8 +185,8 @@ namespace _Code.Scripts.LemurSystems
             string e = scriptableCharacter.energy.ToString("0");
             string a = scriptableCharacter.attack.ToString("0");
             
-            PulseEnergy($"Energy: {e}");
-            attackText.text = $"Attack: {a}";
+            PulseEnergy($"{e}");
+            attackText.text = $"{a}";
         }
 
         private void PulseEnergy(string info)
