@@ -15,7 +15,7 @@ MonoBehaviour:
   characterType: 1
   specialAbility: 0
   characterName: 2
-  energy: 12
+  energy: 20
   attack: 5
   characterCost: 2
   characterSell: 2

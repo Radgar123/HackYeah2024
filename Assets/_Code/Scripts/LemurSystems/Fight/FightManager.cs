@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using _Code.Scripts.LemurSystems.FightUI;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,7 +10,8 @@ namespace _Code.Scripts.LemurSystems.Fight
     public class FightManager : MonoBehaviour
     {
         [SerializeField] private CharactersManager charactersManager;
-
+        [SerializeField] private FightUIAnimations fightUIAnimations;
+        
         [Button]
         public void StartFight()
         {
@@ -19,14 +22,54 @@ namespace _Code.Scripts.LemurSystems.Fight
 
         private IEnumerator MainFight()
         {
+            KilledType attack;
+            
             while (true)
             {
-                if (PlayerAttack()) break;
-                yield return null;
-                if (EnemyAttack()) break;
-                yield return null;
+                attack = PlayerAttack();
+                if (attack == KilledType.Enemy) break;
+                yield return new WaitForSeconds(1f); //mozna dodac chwile przerwy
+
+                attack = EnemyAttack();
+                if (attack == KilledType.Player) break;
+                yield return new WaitForSeconds(1f); //mozna dodac chwile przerwy
             }
             Debug.Log("Zakonczono walke");
+            
+            //Sprawdzić kto wygrał i switch case z KilledType
+            //Wywalić też z Lemur Manager sprawdzanie dmg i zabijanie
+            
+            switch (attack)
+            {
+                case KilledType.Enemy:
+                    Debug.Log("Czekanie enemy");
+                    yield return new WaitForEndOfFrame();
+                    yield return new WaitUntil(() => !fightUIAnimations.sequence.IsPlaying());
+                    DetectAndKill(charactersManager.GetEnemyLemurs());
+                    Debug.Log("Odczekano enemy");
+                    break;
+                case KilledType.Player:
+                    //Debug.Log("Czekanie");
+                    yield return new WaitForEndOfFrame();
+                    yield return new WaitUntil(() => !fightUIAnimations.sequence.IsPlaying());
+                    DetectAndKill(charactersManager.GetPlayerLemurs());
+                    //Debug.Log("Odczekano");
+                    break;
+                default:
+                    Debug.LogError("exception");
+                    break;
+            }
+        }
+
+        private void DetectAndKill(List<LemurManager> lemurs)
+        {
+            foreach (LemurManager lemur in lemurs)
+            {
+                if (lemur.scriptableCharacter.energy <= 0)
+                {
+                    lemur.KillMe();
+                }
+            }
         }
         
         [Button]
@@ -65,7 +108,7 @@ namespace _Code.Scripts.LemurSystems.Fight
         }
         
         [Button]
-        public bool PlayerAttack()
+        public KilledType PlayerAttack()
         {
             List<LemurManager> playerLemurs = charactersManager.GetPlayerLemurs();
             List<LemurManager> enemyLemurs = charactersManager.GetEnemyLemurs();
@@ -82,24 +125,26 @@ namespace _Code.Scripts.LemurSystems.Fight
             if (enemyLemurs.Count <= 0)
             {
                 Debug.LogError("Brak enemies");
-                return true;
+                return KilledType.Exception;
             }
             
+            fightUIAnimations.SetupAndStartAttackAnim(charactersManager.GetEnemyLemurs()[0].transform.position,combinedDamage.ToString());
+
             foreach (LemurManager eLemur in enemyLemurs)
             {
                 eLemur.DealDamage = combinedDamage;
                 if (eLemur.scriptableCharacter.energy <= 0)
                 {
-                    return true;
+                    return KilledType.Enemy;
                 }
-                return false;
+                return KilledType.NoOne;
             }
 
-            return true;
+            return KilledType.Exception;
         }
 
         [Button]
-        public bool EnemyAttack()
+        public KilledType EnemyAttack()
         {
             List<LemurManager> playerLemurs = charactersManager.GetPlayerLemurs();
             List<LemurManager> enemyLemurs = charactersManager.GetEnemyLemurs();
@@ -116,17 +161,25 @@ namespace _Code.Scripts.LemurSystems.Fight
             if (playerLemurs.Count <= 0)
             {
                 Debug.LogError("Brak lemurów gracza");
-                return true;
+                return KilledType.Player;
             }
 
-            bool wasPLemurKiller = false;
+            KilledType wasPLemurKiller = KilledType.NoOne;
             foreach (LemurManager pLemur in playerLemurs)
             {
                 pLemur.DealDamage = combinedDamage;
-                if (pLemur.scriptableCharacter.energy <= 0) wasPLemurKiller = true;
+                if (pLemur.scriptableCharacter.energy <= 0) wasPLemurKiller = KilledType.NoOne;
             }
 
             return wasPLemurKiller;
         }
+    }
+
+    public enum KilledType
+    {
+        NoOne,
+        Exception,
+        Player,
+        Enemy
     }
 }

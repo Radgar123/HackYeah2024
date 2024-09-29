@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -25,7 +26,7 @@ namespace _Code.Scripts.LemurSystems
             set
             {
                 scriptableCharacter.energy -= value;
-                if (scriptableCharacter.energy <= 0) KillMe();
+                //if (scriptableCharacter.energy <= 0) KillMe();
                 UpdateUI();
             }
         }
@@ -175,7 +176,8 @@ namespace _Code.Scripts.LemurSystems
 
         public void KillMe()
         {
-            Destroy(gameObject);
+            //if(scriptableCharacter.characterType == CharacterType.Player)
+                Destroy(gameObject);
         }
 
         private void UpdateUI()
@@ -183,8 +185,21 @@ namespace _Code.Scripts.LemurSystems
             string e = scriptableCharacter.energy.ToString("0");
             string a = scriptableCharacter.attack.ToString("0");
             
-            energyText.text = $"Energy: {e}";
+            PulseEnergy($"Energy: {e}");
             attackText.text = $"Attack: {a}";
+        }
+
+        private void PulseEnergy(string info)
+        {
+            Sequence sequence = DOTween.Sequence();
+            GameObject currObj = energyText.gameObject;
+
+            Tween tw1 = currObj.transform.DOPunchScale(new Vector3(.2f, .2f, .2f), .8f,1,0);
+            sequence.Append(tw1);
+
+            sequence.Play();
+            
+            energyText.text = info;
         }
     }
 }
