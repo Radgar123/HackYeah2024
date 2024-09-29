@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: PlayerTest
   m_EditorClassIdentifier: 
   characterType: 0
-  specialAbility: 1
+  specialAbility: 0
   characterName: 5
-  energy: 5
-  attack: 5
+  energy: 80
+  attack: 1
   characterCost: 5
   characterSell: 5
   multiplier: 1
+  abilityName: 
+  abilityDescription: 

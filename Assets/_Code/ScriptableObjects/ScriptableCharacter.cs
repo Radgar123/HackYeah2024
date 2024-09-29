@@ -15,8 +15,8 @@ public class ScriptableCharacter : ScriptableObject
     
     public string characterName;
     
-    public float energy;
-    public float attack;
+    public int energy;
+    public int attack;
 
     [Header("Shops Params")]
     public int characterCost;
@@ -25,6 +25,10 @@ public class ScriptableCharacter : ScriptableObject
     [Header("Special ability")] 
     [Tooltip("Multiplies by hardcoded value (from GD as on trello) and adds it to the attack value")] 
     public int multiplier;
+
+    [Header("UI Popup")] 
+    public string abilityName;
+    public string abilityDescription;
 }
 
 public enum CharacterType
