@@ -73,6 +73,8 @@ namespace _Code.Scripts.WorldInteraction
         {
             yield return new WaitForSeconds(0.2f);
             _Interacting = !_Interacting;
+            yield return new WaitForSeconds(0.2f);
+            Destroy(gameObject);
         }
     }
 }

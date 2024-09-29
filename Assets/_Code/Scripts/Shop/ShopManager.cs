@@ -12,8 +12,7 @@ namespace Hearings.Shop
         public Transform[] pointsInShop;
 
         public int objectToBuy;
-
-
+        
         public void BuyObject()
         {
             SaveManager.Instance.AddObjectToCharacter(objectToBuy);
