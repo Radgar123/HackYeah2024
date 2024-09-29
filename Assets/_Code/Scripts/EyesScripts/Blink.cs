@@ -4,7 +4,7 @@ using System.Collections;
 public class TextureSwitcher : MonoBehaviour
 {
     public Renderer objectRenderer; 
-    public Texture alternativeTexture; 
+    public Texture BlinkTexture; 
     private Texture originalTexture; 
 
     private Animator animator; 
@@ -25,14 +25,14 @@ public class TextureSwitcher : MonoBehaviour
             if (isChangingTexture)
             {
                 
-                float waitTime = Random.Range(3f, 7f);
+                float waitTime = Random.Range(2f, 5f);
                 yield return new WaitForSeconds(waitTime);
 
                 
-                objectRenderer.material.mainTexture = alternativeTexture;
+                objectRenderer.material.mainTexture = BlinkTexture;
 
                 
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(5f);
 
                 
                 objectRenderer.material.mainTexture = originalTexture;
@@ -47,7 +47,7 @@ public class TextureSwitcher : MonoBehaviour
     public void StartPermanentTexture()
     {
         isChangingTexture = false; 
-        objectRenderer.material.mainTexture = alternativeTexture; 
+        objectRenderer.material.mainTexture = BlinkTexture; 
     }
 
     public void ResetTexture()
@@ -58,8 +58,8 @@ public class TextureSwitcher : MonoBehaviour
 
     private void Update()
     {
-        // Przyk³ad: Wykrywanie zmiany animacji
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("TwojaAnimacja")) 
+        
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Lemur_SleepIdle")) 
         {
             StartPermanentTexture();
         }
