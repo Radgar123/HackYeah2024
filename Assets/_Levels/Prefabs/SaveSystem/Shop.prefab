@@ -83,6 +83,8 @@ MonoBehaviour:
   - {fileID: 45888766851080623, guid: 19dcd5d85f6604410ad36e706dc4e6d3, type: 3}
   - {fileID: 7016049376407037295, guid: 54c6cc11b9b9d4ae79224bd1c07df372, type: 3}
   - {fileID: 603966879189380404, guid: bfbd0d05599144df7b362575e18cbeee, type: 3}
+  - {fileID: 45888766851080623, guid: df2bc071eb5fb3244bbbc2ca5054988f, type: 3}
+  - {fileID: 45888766851080623, guid: 488f3c60ff001ad45941b2d46743972f, type: 3}
   pointsInShop:
   - {fileID: 3062583040341738643}
   - {fileID: 3262228552652167354}

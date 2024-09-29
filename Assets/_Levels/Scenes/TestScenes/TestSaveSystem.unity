@@ -255,6 +255,24 @@ MonoBehaviour:
       lv3:
         itemObject: {fileID: 603966879189380404, guid: bfbd0d05599144df7b362575e18cbeee, type: 3}
         probability: 5
+    - lv1:
+        itemObject: {fileID: 45888766851080623, guid: df2bc071eb5fb3244bbbc2ca5054988f, type: 3}
+        probability: 75
+      lv2:
+        itemObject: {fileID: 45888766851080623, guid: df2bc071eb5fb3244bbbc2ca5054988f, type: 3}
+        probability: 20
+      lv3:
+        itemObject: {fileID: 45888766851080623, guid: df2bc071eb5fb3244bbbc2ca5054988f, type: 3}
+        probability: 5
+    - lv1:
+        itemObject: {fileID: 45888766851080623, guid: 488f3c60ff001ad45941b2d46743972f, type: 3}
+        probability: 75
+      lv2:
+        itemObject: {fileID: 45888766851080623, guid: 488f3c60ff001ad45941b2d46743972f, type: 3}
+        probability: 20
+      lv3:
+        itemObject: {fileID: 45888766851080623, guid: 488f3c60ff001ad45941b2d46743972f, type: 3}
+        probability: 5
   itemList: []
   shopPoints:
   - {fileID: 1197844131}
@@ -804,7 +822,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &1452842289
 RectTransform:
@@ -1895,6 +1913,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 6800634736758109996}
   - {fileID: 1608671289}
   - {fileID: 452038832}
   - {fileID: 1512116961764627503}
@@ -1902,7 +1921,6 @@ SceneRoots:
   - {fileID: 2048571073}
   - {fileID: 5926758079522244496}
   - {fileID: 2102543045}
-  - {fileID: 6800634736758109996}
   - {fileID: 1864196080}
   - {fileID: 250796932}
   - {fileID: 868909102651793057}

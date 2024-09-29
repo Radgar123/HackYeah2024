@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Lemur2
   m_EditorClassIdentifier: 
   characterType: 0
-  specialAbility: 0
+  specialAbility: 2
   characterName: 5
-  energy: 80
-  attack: 1
-  characterCost: 5
-  characterSell: 5
-  multiplier: 1
+  energy: 4
+  attack: 6
+  characterCost: 2
+  characterSell: 1
+  multiplier: 4
   abilityName: 
-  abilityDescription: 
+  abilityDescription: Give one random lemmy friend +4 Energy
