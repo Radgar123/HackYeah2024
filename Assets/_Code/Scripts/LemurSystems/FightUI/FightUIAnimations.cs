@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,14 +11,15 @@ namespace _Code.Scripts.LemurSystems.FightUI
         [SerializeField] private Image image;
         [SerializeField] private float duration = 2f;
         [SerializeField] private Transform startPos;
+        public TextMeshProUGUI newObj;
         public Sequence sequence;
-        
+
         public void SetupAndStartAttackAnim(Vector3 endPos, string damage)
         {
             sequence = DOTween.Sequence();
-            
+
             Image newImage = Instantiate(image.gameObject, image.gameObject.transform.parent).GetComponent<Image>();
-            TextMeshProUGUI newObj = newImage.transform.GetComponentInChildren<TextMeshProUGUI>();
+            newObj = newImage.transform.GetComponentInChildren<TextMeshProUGUI>();
             newObj.text = damage;
             newObj.gameObject.SetActive(true);
             newImage.gameObject.SetActive(true);
@@ -27,14 +29,14 @@ namespace _Code.Scripts.LemurSystems.FightUI
 
             sequence.Append(tw1);
             sequence.Join(tw2);
-            
+
             sequence.OnComplete(() =>
             {
                 //Destroy(newObj.gameObject);
-                newObj.gameObject.SetActive(false);
-                image.gameObject.SetActive(false);
+                Destroy(newImage.gameObject);
+                Debug.Log("animacja ended");
             });
-            
+
             sequence.Play();
         }
     }

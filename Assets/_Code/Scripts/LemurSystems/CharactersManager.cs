@@ -8,7 +8,8 @@ namespace _Code.Scripts.LemurSystems
 {
     public class CharactersManager : Singleton<CharactersManager>
     {
-        [SerializeField] private GameObject lemurPrefab;
+        [Required] [SerializeField] private SpriteRenderer background;
+        [Required] [SerializeField] private GameObject lemurPrefab;
         [SerializeField] private List<Transform> playerSpawnPoints;
         [SerializeField] private List<Transform> enemySpawnPoints;
 
@@ -99,8 +100,9 @@ namespace _Code.Scripts.LemurSystems
             {
                 case CharacterType.Enemy:
                     GameObject currentLemur = Instantiate(characters[0], currSpawnPoints[0]);
-                    currentLemur.GetComponent<LemurManager>().scriptableCharacter =
-                        Instantiate(characters[0].GetComponent<LemurManager>().scriptableCharacter);
+                    LemurManager currLemurManager = currentLemur.GetComponent<LemurManager>();
+                    currLemurManager.scriptableCharacter = Instantiate(characters[0].GetComponent<LemurManager>().scriptableCharacter);
+                    background.sprite = currLemurManager.scriptableCharacter.background;
                     break;
                 case CharacterType.Player:
                     for (int i = 0; i < characters.Count; i++)

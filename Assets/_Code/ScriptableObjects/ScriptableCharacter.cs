@@ -29,6 +29,10 @@ public class ScriptableCharacter : ScriptableObject
     [Header("UI Popup")] 
     public string abilityName;
     public string abilityDescription;
+
+    [Header("UI Other")]
+    [Tooltip("Necessary only if enemy")] 
+    public Sprite background;
 }
 
 public enum CharacterType

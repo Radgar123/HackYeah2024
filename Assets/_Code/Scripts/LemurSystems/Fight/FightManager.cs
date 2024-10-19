@@ -38,10 +38,12 @@ namespace _Code.Scripts.LemurSystems.Fight
             
             while (true)
             {
+                Debug.Log("Player atakuje");
                 attack = PlayerAttack();
                 if (attack == KilledType.Enemy) break;
                 yield return new WaitForSeconds(1f); //mozna dodac chwile przerwy
 
+                Debug.Log("Enemy atakuje");
                 attack = EnemyAttack();
                 if (attack == KilledType.Player) break;
                 yield return new WaitForSeconds(1f); //mozna dodac chwile przerwy
@@ -54,20 +56,21 @@ namespace _Code.Scripts.LemurSystems.Fight
             switch (attack)
             {
                 case KilledType.Enemy:
-                    //Debug.Log("Czekanie enemy");
+                    Debug.Log("Zabito enemy");
                     yield return new WaitForEndOfFrame();
                     yield return new WaitUntil(() => !fightUIAnimations.sequence.IsPlaying());
                     DetectAndKill(charactersManager.GetEnemyLemurs());
                     winEvent.Invoke();
-                    //Debug.Log("Odczekano enemy");
+                    Debug.Log("Odczekano enemy");
                     break;
                 case KilledType.Player:
-                    //Debug.Log("Czekanie");
+                    Debug.Log("Zabito gracza");
                     yield return new WaitForEndOfFrame();
                     yield return new WaitUntil(() => !fightUIAnimations.sequence.IsPlaying());
+                    Debug.Log("xd");
                     DetectAndKill(charactersManager.GetPlayerLemurs());
                     loseEvent.Invoke();
-                    //Debug.Log("Odczekano");
+                    Debug.Log("Odczekano player");
                     break;
                 default:
                     Debug.LogError("exception");

@@ -617,6 +617,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bf8e9e8cd54ded930c4e4f5bc89793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &342724309 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3131499814263796991, guid: 1dca93c4eb559499db09352dc1c591ff, type: 3}
+  m_PrefabInstance: {fileID: 1897509165}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &462949317
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fe8487aaaf4b78994c42cbb39175eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 1219074461}
   image: {fileID: 35719163}
   duration: 1
   startPos: {fileID: 1533909696}
@@ -2101,6 +2105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8eb95cdf1fb4bdeb5a40bc78fec1c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  background: {fileID: 342724309}
   lemurPrefab: {fileID: 2589978676528766129, guid: fbecee00bffb9074f9d4d633ebc79452, type: 3}
   playerSpawnPoints:
   - {fileID: 462949318}

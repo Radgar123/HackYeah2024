@@ -22,3 +22,4 @@ MonoBehaviour:
   multiplier: 1
   abilityName: 
   abilityDescription: 
+  background: {fileID: -139302481, guid: 3eff0ff184f6b074c9595c48e7585e8f, type: 3}
