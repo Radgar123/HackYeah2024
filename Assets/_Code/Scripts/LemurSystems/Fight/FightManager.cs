@@ -38,17 +38,17 @@ namespace _Code.Scripts.LemurSystems.Fight
             
             while (true)
             {
-                Debug.Log("Player atakuje");
+                //Debug.Log("Player atakuje");
                 attack = PlayerAttack();
                 if (attack == KilledType.Enemy) break;
                 yield return new WaitForSeconds(1f); //mozna dodac chwile przerwy
 
-                Debug.Log("Enemy atakuje");
+                //Debug.Log("Enemy atakuje");
                 attack = EnemyAttack();
                 if (attack == KilledType.Player) break;
                 yield return new WaitForSeconds(1f); //mozna dodac chwile przerwy
             }
-            Debug.Log("Zakonczono walke");
+            //Debug.Log("Zakonczono walke");
             
             //Sprawdzić kto wygrał i switch case z KilledType
             //Wywalić też z Lemur Manager sprawdzanie dmg i zabijanie
@@ -56,21 +56,20 @@ namespace _Code.Scripts.LemurSystems.Fight
             switch (attack)
             {
                 case KilledType.Enemy:
-                    Debug.Log("Zabito enemy");
+                    //Debug.Log("Zabito enemy");
                     yield return new WaitForEndOfFrame();
                     yield return new WaitUntil(() => !fightUIAnimations.sequence.IsPlaying());
                     DetectAndKill(charactersManager.GetEnemyLemurs());
                     winEvent.Invoke();
-                    Debug.Log("Odczekano enemy");
+                    //Debug.Log("Odczekano enemy");
                     break;
                 case KilledType.Player:
-                    Debug.Log("Zabito gracza");
+                    //Debug.Log("Zabito gracza");
                     yield return new WaitForEndOfFrame();
                     yield return new WaitUntil(() => !fightUIAnimations.sequence.IsPlaying());
-                    Debug.Log("xd");
                     DetectAndKill(charactersManager.GetPlayerLemurs());
                     loseEvent.Invoke();
-                    Debug.Log("Odczekano player");
+                    //Debug.Log("Odczekano player");
                     break;
                 default:
                     Debug.LogError("exception");
@@ -144,8 +143,9 @@ namespace _Code.Scripts.LemurSystems.Fight
                 Debug.Log("Brak enemies");
                 return KilledType.Exception;
             }
-            
-            fightUIAnimations.SetupAndStartAttackAnim(charactersManager.GetEnemyLemurs()[0].transform.position,combinedDamage.ToString());
+
+            StartCoroutine(SendDamageDataToAnim(charactersManager.GetEnemyLemurs()[0].transform.position,
+                combinedDamage.ToString(), playerLemurs));
 
             foreach (LemurManager eLemur in enemyLemurs)
             {
@@ -160,6 +160,19 @@ namespace _Code.Scripts.LemurSystems.Fight
             return KilledType.Exception;
         }
 
+        private IEnumerator SendDamageDataToAnim(Vector3 endPos, string combinedDamage,  List<LemurManager> lemurs)
+        {
+            //List<Vector3> _startPos, List<string> damage
+            foreach (LemurManager lemur in lemurs)
+            {
+                fightUIAnimations.SetupAndStartPreAttackAnim(lemur.transform.position,lemur.scriptableCharacter.attack.ToString());
+            }
+
+            yield return new WaitForSeconds(fightUIAnimations.durationOne);
+            
+            fightUIAnimations.SetupAndStartAttackAnim(endPos,combinedDamage);
+        }
+        
         [Button]
         public KilledType EnemyAttack()
         {
