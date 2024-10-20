@@ -15,6 +15,7 @@ namespace _Code.Scripts.LemurSystems
         [Header("UI Elements")] 
         [SerializeField] private TextMeshProUGUI energyText;
         [SerializeField] private TextMeshProUGUI attackText;
+        [SerializeField] private TextMeshProUGUI myName;
 
         private void Start()
         {
@@ -184,9 +185,11 @@ namespace _Code.Scripts.LemurSystems
         {
             string e = scriptableCharacter.energy.ToString("0");
             string a = scriptableCharacter.attack.ToString("0");
+            string n = scriptableCharacter.characterName;
             
             PulseEnergy($"{e}");
             attackText.text = $"{a}";
+            myName.text = n;
         }
 
         private void PulseEnergy(string info)

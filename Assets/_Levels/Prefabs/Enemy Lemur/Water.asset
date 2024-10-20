@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 1
   specialAbility: 4
-  characterName: 2
+  characterName: Water
   energy: 25
   attack: 3
   characterCost: 2

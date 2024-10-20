@@ -145,7 +145,7 @@ namespace _Code.Scripts.LemurSystems.Fight
             }
 
             StartCoroutine(SendDamageDataToAnim(charactersManager.GetEnemyLemurs()[0].transform.position,
-                combinedDamage.ToString(), playerLemurs));
+                combinedDamage, playerLemurs));
 
             foreach (LemurManager eLemur in enemyLemurs)
             {
@@ -160,9 +160,14 @@ namespace _Code.Scripts.LemurSystems.Fight
             return KilledType.Exception;
         }
 
-        private IEnumerator SendDamageDataToAnim(Vector3 endPos, string combinedDamage,  List<LemurManager> lemurs)
+        private IEnumerator SendDamageDataToAnim(Vector3 endPos, int combinedDamage,  List<LemurManager> lemurs)
         {
-            //List<Vector3> _startPos, List<string> damage
+            if (combinedDamage <= 0)
+            {
+                Debug.LogWarning("Wykonano atak ale nie ma lemurkow");
+                yield break;
+            }
+            
             foreach (LemurManager lemur in lemurs)
             {
                 fightUIAnimations.SetupAndStartPreAttackAnim(lemur.transform.position,lemur.scriptableCharacter.attack.ToString());
@@ -170,7 +175,7 @@ namespace _Code.Scripts.LemurSystems.Fight
 
             yield return new WaitForSeconds(fightUIAnimations.durationOne);
             
-            fightUIAnimations.SetupAndStartAttackAnim(endPos,combinedDamage);
+            fightUIAnimations.SetupAndStartAttackAnim(endPos,combinedDamage.ToString());
         }
         
         [Button]

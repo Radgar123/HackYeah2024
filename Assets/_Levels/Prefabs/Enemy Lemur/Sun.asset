@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterType: 1
   specialAbility: 5
-  characterName: 2
+  characterName: Sun
   energy: 25
   attack: 3
   characterCost: 2
