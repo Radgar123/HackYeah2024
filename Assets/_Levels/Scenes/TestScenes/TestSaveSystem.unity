@@ -1618,6 +1618,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6643661203890532054, guid: 076247f41882a43d1b014a63b8a2016d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643661203890532054, guid: 076247f41882a43d1b014a63b8a2016d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643661203890532054, guid: 076247f41882a43d1b014a63b8a2016d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1565132944}
+    - target: {fileID: 6643661203890532054, guid: 076247f41882a43d1b014a63b8a2016d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643661203890532054, guid: 076247f41882a43d1b014a63b8a2016d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSceneById
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643661203890532054, guid: 076247f41882a43d1b014a63b8a2016d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _Code.Scripts.SceneLoader.LoadScene, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643661203890532054, guid: 076247f41882a43d1b014a63b8a2016d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8152610506818892368, guid: 076247f41882a43d1b014a63b8a2016d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
