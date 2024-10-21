@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace _Code.Scripts.LemurSystems
@@ -11,14 +12,17 @@ namespace _Code.Scripts.LemurSystems
     {
         [Tooltip("Visible only for debug purpose")]
         public ScriptableCharacter scriptableCharacter;
-
+        private int _maxEnergy = 0;
+        
         [Header("UI Elements")] 
         [SerializeField] private TextMeshProUGUI energyText;
         [SerializeField] private TextMeshProUGUI attackText;
         [SerializeField] private TextMeshProUGUI myName;
+        [SerializeField] private Image healthBar;
 
         private void Start()
         {
+            _maxEnergy = scriptableCharacter.energy;
             UpdateUI();
         }
 
@@ -186,10 +190,16 @@ namespace _Code.Scripts.LemurSystems
             string e = scriptableCharacter.energy.ToString("0");
             string a = scriptableCharacter.attack.ToString("0");
             string n = scriptableCharacter.characterName;
-            
+
+            UpdateHealthBar(scriptableCharacter.energy,_maxEnergy);
             PulseEnergy($"{e}");
             attackText.text = $"{a}";
             myName.text = n;
+        }
+
+        private void UpdateHealthBar(float currentEnergy, float maxEnergy)
+        {
+            healthBar.fillAmount = currentEnergy / maxEnergy;
         }
 
         private void PulseEnergy(string info)

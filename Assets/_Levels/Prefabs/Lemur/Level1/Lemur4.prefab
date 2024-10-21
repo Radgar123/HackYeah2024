@@ -758,6 +758,7 @@ MonoBehaviour:
   energyText: {fileID: 6233224294841132355}
   attackText: {fileID: 3139158723338738324}
   myName: {fileID: 1209581527482890478}
+  healthBar: {fileID: 1721779722688839387}
 --- !u!95 &5604432277162861497
 Animator:
   serializedVersion: 5
@@ -1033,6 +1034,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1721779722688839387 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7437137224041766343, guid: 294409178b3e1584e8b25d06b058068e, type: 3}
+  m_PrefabInstance: {fileID: 8129834535724426012}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3139158723338738324 stripped
